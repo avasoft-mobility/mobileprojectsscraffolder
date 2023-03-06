@@ -1,7 +1,7 @@
 {
   "main": "build/main.js",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"cross-env NODE_ENV=dev nodemon --watch build --exec 'electron .'\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"cross-env NODE_ENV=dev nodemon --watch build --exec 'electron .'\"",
     "build": "tsc && cross-env xcopy assets build",
     "postbuild": "cd build && mkdir assets && move preload.js assets"
   },

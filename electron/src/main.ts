@@ -1,6 +1,7 @@
 import { BrowserWindow, app, ipcMain, Menu, shell } from "electron";
 import isDev from "electron-is-dev";
 import path from "path";
+import { exec } from "child_process";
 // const { dialog } = require("electron");
 
 // var fs = require("fs");
@@ -23,7 +24,7 @@ function createWindow() {
 
   mainWindow.maximize();
   mainWindow.loadURL(
-    isDev ? "https://cookbook.avasoft.com/topics" : "https://cookbook.avasoft.com/topics"
+    isDev ? "http://localhost:3000/" : "http://localhost:3000/"
   );
 
   mainWindow.on("closed", () => mainWindow.destroy());
@@ -34,11 +35,20 @@ function createWindow() {
 
   ipcMain.handle("channel", async (event, msg, env_lst) => {
     var socket = require("socket.io-client")("http://localhost:4000");
-
-    return true || false;
     
   });
 }
+
+// const command = `cd src && node server.js`;
+// new Promise<void>((resolve, reject) => {
+//   exec(command, (err, stdout, stderr) => {
+//     if (err) {
+//       reject(err);
+//       return;
+//     }
+//     resolve();
+//   });
+// });
 
 app.on("browser-window-created", function (e, window) {
   window.setMenu(null);
