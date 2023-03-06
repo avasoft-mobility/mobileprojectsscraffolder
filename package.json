@@ -1,0 +1,61 @@
+{
+  "name": "mobileprojectscraffolder",
+  "version": "0.1.0",
+  "description": "Code Gen",
+  "main": "electron/build/main.js",
+  "scripts": {
+    "start-electron": "yarn --cwd electron start",
+    "start-frontend": "cross-env BROWSER=none yarn --cwd frontend react-start",
+    "electron-build": "electron-builder",
+    "build": "yarn --cwd electron build && yarn --cwd frontend react-build && yarn electron-build",
+    "install": "yarn install --cwd frontend && yarn install --cwd electron"
+  },
+  "author": "Avasoft",
+  "license": "ISC",
+  "build": {
+    "appId": "com.example.mps",
+    "productName": "Scraffolder",
+    "copyright": "Copyright © 2022 Avasoft",
+    "files": [
+      "electron/build",
+      {
+        "from": "electron/node_modules",
+        "to": "node_modules"
+      },
+      {
+        "from": "frontend/build",
+        "to": "electron/build"
+      }
+    ],
+    "win": {
+      "target": "msi",
+      "icon": "frontend/public/favicon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "frontend/public/favicon.ico"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.10.4",
+    "@mui/styles": "^5.10.6",
+    "@mui/system": "^5.10.6",
+    "bootstrap": "^5.2.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "typescript": "4.4.2"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/node": "16.7.10",
+    "concurrently": "^6.2.1",
+    "cross-env": "^7.0.3",
+    "electron": "^13.2.3",
+    "electron-builder": "^22.11.7",
+    "electron-winstaller": "^5.0.0",
+    "prettier": "^2.3.2",
+    "wait-on": "^3.2.0"
+  }
+}
