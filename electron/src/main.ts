@@ -34,7 +34,7 @@ function createWindow() {
   }
 
   ipcMain.handle("channel", async (event, msg, env_lst) => {
-    var socket = require("socket.io-client")("http://localhost:4000");
+    
     
   });
 }
@@ -50,6 +50,7 @@ function createWindow() {
 //   });
 // });
 
+console.log("ANDRAFASDFOID",process.cwd())
 app.on("browser-window-created", function (e, window) {
   window.setMenu(null);
 });
